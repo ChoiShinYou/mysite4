@@ -26,7 +26,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
     <!-- oracle datasource -->
     <bean id="oracleDatasource" class="oracle.jdbc.pool.OracleDataSource" destroy-method="close">
         <property name="URL" value="jdbc:oracle:thin:@localhost:1521:xe" />
-        <property name="user" value="c##webdb" />
+        <property name="user" value="webdb" />
         <property name="password" value="webdb" />
         <property name="connectionCachingEnabled" value="true" />
         <qualifier value="main-db" />

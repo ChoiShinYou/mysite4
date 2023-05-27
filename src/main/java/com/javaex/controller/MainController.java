@@ -16,6 +16,6 @@ public class MainController {
 	public String main()	{
 		System.out.println("Maincontroller.main()");
 		
-		return "/main/main";
+		return "main/main";
 	}
 }

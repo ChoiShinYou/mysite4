@@ -28,16 +28,23 @@ public class UserController {
 
 	// 회원가입
 	@RequestMapping(value = "/join" , method = { RequestMethod.GET , RequestMethod.POST })
-	public String join(@ModelAttribute("userVo")UserVo userVo) {
+	public String join(@ModelAttribute("userVo") UserVo userVo) {
 		System.out.println("UserController.join");
 		
+		/*
 		int count = userService.join(userVo);
 		if(count > 0) {
 			return "/user/joinOk";
 		}else {
 			return "redirect:/user/joinForm";
 		}
-
+		
+		*/
+		
+		return "";
+	}
+	
+	
 	// 로그아웃
 	@RequestMapping(value = "/logout", method = { RequestMethod.GET, RequestMethod.POST})
 	public String logout(HttpSession session) {
