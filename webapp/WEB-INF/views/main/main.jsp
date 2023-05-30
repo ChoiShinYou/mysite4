@@ -36,12 +36,12 @@
 
 			<div id="index"> 
 			
-				<img id="profile-img" src="${pageContext.request.contextPath}/assets/image/profile.jpg">
+				<img id="profile-img" src="${pageContext.request.contextPath}/assets/image/111.jpg">
 				
 				<div id="greetings">
 					<p class="text-xlarge">
 						<span class="bold">안녕하세요!!<br>
-						최시녕의 MySite에 오신 것을 환영합니다.<br>
+						최시녕의 미니홈피임미다 ㅇ_ㅇ <br>
 						<br>
 						이 사이트는 웹 프로그램밍 실습과제 예제 사이트입니다.<br>
 						</span>
@@ -54,7 +54,7 @@
 						<br>
 						(자유롭게 꾸며보세요!!)<br>
 						<br><br>
-						<a class="" href="">[방명록에 글 남기기]</a>
+						<a class="" href="">[방명록 가기]</a>
 					</p>	
 				</div>
 				<!-- //greetings -->
