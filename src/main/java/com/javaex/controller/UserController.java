@@ -33,12 +33,13 @@ public class UserController {
 
 		System.out.println("UserController.join");
 
-		/*
-		 * int count = userService.join(userVo); if(count > 0) { return "/user/joinOk";
-		 * }else { return "redirect:/user/joinForm"; }
-		 */
+		int count = userService.join(userVo);
+		if (count > 0) {
+			return "/user/joinOk";
+		} else {
+			return "redirect:/user/joinForm";
+		}
 
-		return "";
 	}
 
 	// 로그인폼
@@ -54,7 +55,7 @@ public class UserController {
 	@RequestMapping(value = "/login", method = { RequestMethod.GET, RequestMethod.POST })
 	public String login(@ModelAttribute UserVo userVo, HttpSession session) {
 		// UserVo 객체는 사용자가 입력한 로그인 정보,
-		// HttpSession 객체는 세션을 관리하기 위한 객체입니다.
+		// HttpSession 객체는 세션을 관리하기 위한 객체
 
 		System.out.println("UserController.login");
 		UserVo authUser = userService.login(userVo);
