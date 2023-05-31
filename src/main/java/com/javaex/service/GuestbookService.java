@@ -11,23 +11,34 @@ import com.javaex.vo.GuestbookVo;
 @Service
 public class GuestbookService {
 
+	@Autowired
+	private GuestbookDao guestbookDao;
+
 	// 방명록 리스트
 	public List<GuestbookVo> getGuestList() {
+
 		System.out.println("GuestbookService.getGuestList()");
 
-		List<GuestbookVo> guestbooklist = GuestbookDao.selectGuestbookList();
+		List<GuestbookVo> guestbookList = guestbookDao.selectGuestList();
 
-		return guestbooklist();
+		return guestbookList;
 	}
 
 	// 방명록삭제
-	public void delete(GuestbookVo guestbookVo) {
+	public void deleteGuest(GuestbookVo guestbookVo) {
+
 		System.out.println("GuestbookService.delete");
+
+		guestbookDao.deleteGuest(guestbookVo);
 	}
 
 	// 방명록등록
-	public void add(GuestbookVo guestbookVo) {
+	public void addGuest(GuestbookVo guestbookVo) {
+
 		System.out.println("GuestbookService.add");
+
+		guestbookDao.insertGuest(guestbookVo);
+
 	}
 
 }

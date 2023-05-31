@@ -19,17 +19,17 @@ public class UserController {
 	private UserService userService;
 
 	// 회원가입폼
-	@RequestMapping(value = "/user/joinForm", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "/joinForm", method = { RequestMethod.GET, RequestMethod.POST })
 	public String joinForm() {
 
 		System.out.println("UserController.joinForm");
 
-		return "/user/joinForm";
+		return "user/joinForm";
 	}
 
 	// 회원가입
 	@RequestMapping(value = "/join", method = { RequestMethod.GET, RequestMethod.POST })
-	public String join(@ModelAttribute("userVo") UserVo userVo) {
+	public String join(@ModelAttribute UserVo userVo) {
 
 		System.out.println("UserController.join");
 
@@ -43,12 +43,12 @@ public class UserController {
 	}
 
 	// 로그인폼
-	@RequestMapping(value = "/user/login", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "/loginForm", method = { RequestMethod.GET, RequestMethod.POST })
 	public String loginForm() {
 
 		System.out.println("UserController.loginForm()");
 
-		return "/user/loginForm";
+		return "user/loginForm";
 	}
 
 	// 로그인
@@ -94,7 +94,7 @@ public class UserController {
 	}
 
 	// 회원정보폼
-	@RequestMapping(value = "/user/modifyForm", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "/modifyForm", method = { RequestMethod.GET, RequestMethod.POST })
 	public String modifyForm(HttpSession sessoin, Model model) {
 		// HttpSessoin 통해 세션 사용
 		// Model 통해 뷰에 데이터 전달
@@ -106,7 +106,7 @@ public class UserController {
 		UserVo userVo = userService.modifyForm(no);
 		model.addAttribute(userVo);
 
-		return "/user/modifyForm";
+		return "user/modifyForm";
 	}
 
 	// 회원정보수정

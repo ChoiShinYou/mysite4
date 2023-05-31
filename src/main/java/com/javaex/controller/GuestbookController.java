@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.javaex.service.GuestbookService;
 import com.javaex.vo.GuestbookVo;
@@ -37,9 +38,10 @@ public class GuestbookController {
 	@RequestMapping(value = "/guestbook/delete", method = { RequestMethod.GET, RequestMethod.POST })
 	public String delete(@ModelAttribute GuestbookVo guestbookVo) {
 		System.out.println("GuestbookController.delete");
-		guestbookService.delete(guestbookVo);	//guestbookVo에 포함된 방명록정보가 db에서 삭제
+		guestbookService.deleteGuest(guestbookVo);	//guestbookVo에 포함된 방명록정보가 db에서 삭제
 		return "redirect:/guestbook/addList";	//삭제 후 방명록 목록으로 리다이렉트
 	}
+//	@RequestParam("password")String password
 
 	// 방명록삭제폼
 	@RequestMapping(value = "/guestbook/deleteForm", method = { RequestMethod.GET, RequestMethod.POST })
@@ -52,7 +54,7 @@ public class GuestbookController {
 	@RequestMapping(value = "/guestbook/add", method = { RequestMethod.GET, RequestMethod.POST })
 	public String add(@ModelAttribute GuestbookVo guestbookVo) {
 		System.out.println("GuestbookController.add");
-		guestbookService.add(guestbookVo);
+		guestbookService.addGuest(guestbookVo);
 		return "redirect:/guestbook/add";
 	}
 	//guestbookVo 에는 등록할 방명록의 정보 포함

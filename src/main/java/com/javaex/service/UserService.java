@@ -64,11 +64,11 @@ public class UserService {
 
 }
 
-//selectone 은 하나만 검색
+//selectone 하나만 검색
 //selectlist 여러개 검색
-//인서트는 새로운거를 입력
-//업데이트는 있는거에서 수정
+//insert 새로운거를 입력
+//update 있는거에서 수정
 
-//컨트롤은 jsp연결
-//서비스는 controller 와 Dao 연결해주는 서비스
-//다오는 db 와 연결
+//controller은 jsp연결
+//service는 controller 와 Dao 연결해주는 서비스
+//dao는 db 와 연결
