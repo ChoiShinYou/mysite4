@@ -25,7 +25,9 @@ public class UserDao { // UserDao 클래스는 데이터베이스에 접근하�
 	// 회원가입
 	public int insertUser(UserVo userVo) {
 		System.out.println("UserDao.insertUser");
+		// System.out.println(userVo);
 		int count = sqlSession.insert("user.insertUser", userVo);
+		System.out.println(count);
 		return count;
 	}
 	// sqlSession.insert 메서드를 호출하여 데이터베이스에 사용자 정보를 삽입

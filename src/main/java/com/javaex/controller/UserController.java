@@ -110,8 +110,12 @@ public class UserController {
 	}
 
 	// 회원정보수정
-	@RequestMapping(value = "/user/modify", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "/modify", method = { RequestMethod.GET, RequestMethod.POST })
 	public String modify(HttpSession session, @ModelAttribute UserVo userVo) {
-		return null;
+		// HttpSessoin 통해 세션 사용
+		// Model 통해 뷰에 데이터 전달
+		System.out.println("UserController.modify");
+		
+		return "redirect:/modify/main";
 	}
 }
