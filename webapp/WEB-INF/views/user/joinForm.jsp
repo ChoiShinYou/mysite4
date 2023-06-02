@@ -11,6 +11,8 @@
 <link href="${pageContext.request.contextPath}/assets/css/user.css"
 	rel="stylesheet" type="text/css">
 
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
 </head>
 
 <body>
@@ -18,7 +20,7 @@
 
 		<c:import url="/WEB-INF/views/include/header.jsp" />
 		<!-- //header -->
-		
+
 		<c:import url="/WEB-INF/views/include/nav.jsp" />
 		<!-- //nav -->
 
@@ -56,7 +58,8 @@
 							<label class="form-text" for="input-uid">아이디</label> <input
 								type="text" id="input-uid" name="id" value=""
 								placeholder="아이디를 입력하세요">
-							<button type="button" id="">중복체크</button>
+							<button type="button" id="btnIdcheck">중복체크</button>
+							<p id="idcheckMsg">이도단쓰레기왜안버림?</p>
 						</div>
 
 						<!-- 비밀번호 -->
@@ -111,5 +114,62 @@
 	<!-- //wrap -->
 
 </body>
+<script type="text/javascript">
+	//아이디 체크 버튼 클릭했을 때
+	$("#btnIdcheck").on("click", function() {
+		console.log("버튼 클릭");
+
+		//id추출
+		var id = $("[name=id]").val();
+		console.log(id);
+
+		//통신 id////////////////////////////////////////
+		
+		
+		$.ajax({
+		
+			url : "${pageContext.request.contextPath }/user/idcheck", //주소 요청해야될 곳
+			type : "post",
+			//contentType : "application/json",
+			data : {id : id},
+	
+			dataType : "json",
+			success : function(result){
+				/*성공시 처리해야될 코드 작성*/
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});	
+		
+		//응답
+
+		//사용불가능
+		var userVo = {
+			no : 1,
+			name : "최신영",
+			id : "sibasa",
+			password : "123",
+			gender : "female"
+		};
+		//사용가능
+		var userVo = null;
+
+		/////////////////////////////////
+
+		if (userVo == null) {
+			//사용가능
+			$("#idcheckMsg").html(id + "는 사용가능합니다.");
+
+		} else {
+			//사용불가
+			$("#idcheckMsg").html(id + "는 사용중입니다.");
+		}
+
+	});
+</script>
+
+
+
 
 </html>

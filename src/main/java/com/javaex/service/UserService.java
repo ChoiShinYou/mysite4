@@ -1,5 +1,6 @@
 package com.javaex.service;
 
+import org.apache.ibatis.reflection.SystemMetaObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +26,7 @@ public class UserService {
 		return authUser;
 		// userDao.selectUser(userVo)를 호출하여 사용자 정보를 데이터베이스에서 조회
 		// 조회된 사용자 정보를 authUser 변수에 저장한 후 반환
-		//변수에는 인증된 사용자의 정보가 저장
+		// 변수에는 인증된 사용자의 정보가 저장
 	}
 
 	// 회원등록
@@ -61,7 +62,27 @@ public class UserService {
 
 		// no는 사용자의 고유한 식별자이며, 수정할 회원 정보를 찾기 위해 사용
 	}
+//
+//	// 아이디체크
+//	public boolean ge(String id) {
+//		System.out.println("[Userservice.getUser()]");
+//	UserVo userVo = userDao.selectUser(id)
+//	
+//			if(userVo == null) {
+//				return true;
+//				
+//			}else {
+//				return false;
+//			}
+//	}
 
+	//아이디체크
+	public UserVo idcheck(String id) {
+		System.out.println("UserService.getUser()");
+		UserVo userVo =  userDao.selectUser(id);
+		userDao.selectUser(id);
+		return userVo;
+	}
 }
 
 //selectone 하나만 검색

@@ -16,13 +16,14 @@ import com.javaex.vo.GuestbookVo;
 //vo->controller->service->dao 순으로 정리하기
 
 @Controller
+@RequestMapping("/guest")
 public class GuestbookController {
 
 	@Autowired
 	private GuestbookService guestbookService;
 
 	// 1.방명록리스트
-	@RequestMapping(value = "/guestbook/list", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "/list", method = { RequestMethod.GET, RequestMethod.POST })
 	public String list(Model model) {
 		System.out.println("GuestbookController.list");
 		List<GuestbookVo> guestlist = guestbookService.getGuestList();
@@ -35,7 +36,7 @@ public class GuestbookController {
 	// Model model 객체로만 사용해야하는 이유?
 
 	// 방명록삭제
-	@RequestMapping(value = "/guestbook/delete", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "/delete", method = { RequestMethod.GET, RequestMethod.POST })
 	public String delete(@ModelAttribute GuestbookVo guestbookVo) {
 		System.out.println("GuestbookController.delete");
 		guestbookService.deleteGuest(guestbookVo);	//guestbookVo에 포함된 방명록정보가 db에서 삭제
@@ -44,14 +45,14 @@ public class GuestbookController {
 //	@RequestParam("password")String password
 
 	// 방명록삭제폼
-	@RequestMapping(value = "/guestbook/deleteForm", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "/deleteForm", method = { RequestMethod.GET, RequestMethod.POST })
 	public String deleteForm() {
 		System.out.println("GuestbookController.deleteForm");
 		return "/guestbook/deleteForm";
 	}
 
 	// 방명록등록
-	@RequestMapping(value = "/guestbook/add", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "/add", method = { RequestMethod.GET, RequestMethod.POST })
 	public String add(@ModelAttribute GuestbookVo guestbookVo) {
 		System.out.println("GuestbookController.add");
 		guestbookService.addGuest(guestbookVo);

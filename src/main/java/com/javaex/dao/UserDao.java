@@ -47,6 +47,18 @@ public class UserDao { // UserDao 클래스는 데이터베이스에 접근하�
 		int count = sqlSession.update("user.updateUser", userVo);
 		return count;
 	}
+
+	// 아이디체크
+	public UserVo selectUser(String id) {
+		System.out.println("UserDao.selectUser()");
+		System.out.println(id);
+
+		UserVo userVo = sqlSession.selectOne("user.selectUserById", id);
+
+		System.out.println(userVo);
+
+		return userVo;
+	}
 	// "user.updateUser"라는 SQL 문을 실행하여 데이터베이스에서 회원 정보를 수정
 	// 수정된 회원 정보를 데이터베이스에 업데이트하고 수정된 행의 수를 반환
 	// 이를 통해 회원 정보 수정 기능이 수행
